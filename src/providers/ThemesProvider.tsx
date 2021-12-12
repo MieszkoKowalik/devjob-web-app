@@ -2,12 +2,14 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "assets/styles/themes";
 import { createContext, useState, useEffect } from "react";
 
-interface IThemesContext {
+interface ThemesContextInterface {
   isDarkMode: boolean;
-  toggleTheme?: () => void;
+  toggleTheme: () => void;
 }
 
-export const ThemesContext = createContext<IThemesContext | null>(null);
+export const ThemesContext = createContext<ThemesContextInterface>(
+  {} as ThemesContextInterface
+);
 
 const ThemesProvider = ({ children }: { children: React.ReactNode }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
