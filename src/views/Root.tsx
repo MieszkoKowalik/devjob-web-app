@@ -1,11 +1,13 @@
 import React from "react";
-import GlobalStyle from "../assets/styles/globalStyle";
-
+import GlobalStyle from "assets/styles/globalStyle";
+import ThemesProvider from "providers/ThemesProvider";
 function Root() {
   return (
     <div className="App">
-      <GlobalStyle />
-      <h1>It's working</h1>
+      <ThemesProvider>
+        <GlobalStyle />
+        <h1>It's working</h1>
+      </ThemesProvider>
     </div>
   );
 }
