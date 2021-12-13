@@ -19,7 +19,9 @@ const ThemesProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.setItem("darkMode", (!isDarkMode).toString());
   };
   const setOSPreferedTheme = () => {
-    const preferesDarkScheme = window.matchMedia("(prefers-color-scheme:dark");
+    const preferesDarkScheme = window.matchMedia(
+      "(prefers-color-scheme:dark"
+    ).matches;
     if (preferesDarkScheme) {
       setIsDarkMode(true);
     }
