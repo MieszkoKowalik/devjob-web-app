@@ -1,12 +1,15 @@
-import React from "react";
 import GlobalStyle from "assets/styles/globalStyle";
 import ThemesProvider from "providers/ThemesProvider";
+import MainTemplate from "components/template/MainTemplate/MainTemplate";
+
 function Root() {
   return (
     <div className="App">
       <ThemesProvider>
         <GlobalStyle />
-        <h1>It's working</h1>
+        <MainTemplate>
+          <h1>It's working</h1>
+        </MainTemplate>
       </ThemesProvider>
     </div>
   );
