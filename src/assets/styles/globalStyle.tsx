@@ -23,6 +23,7 @@ select {
 	body{
 	font-family: 'Kumbh Sans', sans-serif;
   min-height:100vh;
+  background-color: ${({ theme }) => theme.colors.bg.primary}
 }
 `;
 
