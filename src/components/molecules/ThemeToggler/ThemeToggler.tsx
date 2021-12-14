@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ReactComponent as MoonIcon } from "assets/images/desktop/icon-moon.svg";
 import { ReactComponent as SunIcon } from "assets/images/desktop/icon-sun.svg";
 import { ThemesContext } from "providers/ThemesProvider";
-import { StyledLabel } from "./ThemeToggler.styled";
+import { StyledLabel } from "./ThemeToggler.styles";
 
 interface Props {}
 const ThemeToggler = (props: Props) => {
