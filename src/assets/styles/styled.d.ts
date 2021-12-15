@@ -24,6 +24,7 @@ declare module "styled-components" {
         accentDark: string;
         accent: string;
         accentLight: string;
+        accentVeryLight: string;
       };
     };
     breakpoints: {
