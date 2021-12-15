@@ -21,12 +21,17 @@ export const StyledLabel = styled.label`
       border-radius: 50%;
       width: 14px;
       height: 14px;
-      transition: transform 0.2s ease-in-out;
+      transition: transform 0.2s ease-in-out, background-color 0.2s;
       transform: ${({ theme }) =>
         theme.mode === "light"
           ? "translateX(0%)"
           : "translateX(calc(200% - 5px))"};
       background-color: ${({ theme }) => theme.colors.bg.accentDark};
+    }
+    &:hover {
+      &::after {
+        background-color: ${({ theme }) => theme.colors.bg.accent};
+      }
     }
   }
 
