@@ -3,7 +3,7 @@ import ThemeToggler from "./ThemeToggler";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
-  title: "Components/Atoms/ThemeToggler",
+  title: "Components/Molecules/ThemeToggler",
   component: ThemeToggler,
 } as ComponentMeta<typeof ThemeToggler>;
 
