@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-import { ContentWrapper } from "components/molecules/ContentWrapper/ContentWrapper";
+import { ViewWrapper } from "components/molecules/ViewWrapper/ViewWrapper";
 import HeaderMoblieBg from "assets/images/mobile/bg-pattern-header.svg";
 import HeaderTabletBg from "assets/images/tablet/bg-pattern-header.svg";
 import HeaderDesktopBg from "assets/images/desktop/bg-pattern-header.svg";
 
-export const StyledContentWrapper = styled(ContentWrapper)`
+export const StyledContentWrapper = styled(ViewWrapper)`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;

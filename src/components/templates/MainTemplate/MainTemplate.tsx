@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import Header from "components/organisms/Header/Header";
-import { ContentWrapper } from "components/molecules/ContentWrapper/ContentWrapper";
+import { ViewWrapper } from "components/molecules/ViewWrapper/ViewWrapper";
 import { Wrapper } from "./MainTemplate.styles";
 
 interface Props {
@@ -12,7 +12,7 @@ const MainTemplate = ({ children }: Props) => {
     <Wrapper>
       <Header></Header>
       <main>
-        <ContentWrapper>{children}</ContentWrapper>
+        <ViewWrapper>{children}</ViewWrapper>
       </main>
     </Wrapper>
   );
