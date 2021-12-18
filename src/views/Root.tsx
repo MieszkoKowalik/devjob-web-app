@@ -1,17 +1,21 @@
 import GlobalStyle from "assets/styles/globalStyle";
 import ThemesProvider from "providers/ThemesProvider";
 import MainTemplate from "components/templates/MainTemplate/MainTemplate";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import JobsList from "./JobsList";
 
 function Root() {
   return (
-    <div className="App">
+    <BrowserRouter>
       <ThemesProvider>
         <GlobalStyle />
         <MainTemplate>
-          <h1>It's working</h1>
+          <Routes>
+            <Route path="/" element={<JobsList />} />
+          </Routes>
         </MainTemplate>
       </ThemesProvider>
-    </div>
+    </BrowserRouter>
   );
 }
 
