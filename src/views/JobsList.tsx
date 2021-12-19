@@ -1,4 +1,5 @@
 import JobCard from "components/organisms/JobCard/JobCard";
+import { useEffect } from "react";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -44,7 +45,40 @@ const jobs = [
   },
 ];
 
+const token = "TOKEN";
+
+const headers = {
+  "content-type": "application/json",
+  Authorization: `Bearer ${token}`,
+};
+const graphqlQuery = {
+  operationName: "AllJobs",
+  query: `query GetAllJobs { allJobs{
+    company
+    jobposition
+  } }`,
+  variables: {},
+};
+
+const options = {
+  method: "POST",
+  headers: headers,
+  body: JSON.stringify(graphqlQuery),
+};
+
 const JobsList = (props: Props) => {
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await fetch("https://graphql.datocms.com/", options);
+        console.log(response, "res");
+        const data = await response.json();
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, []);
   return (
     <Wrapper>
       {jobs.map((job) => (
