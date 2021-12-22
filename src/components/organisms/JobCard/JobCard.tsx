@@ -10,7 +10,7 @@ interface Props {
     id: number;
     company: string;
     logoBackground: string;
-    position: string;
+    jobPosition: string;
     postedAt: string;
     contract: string;
     location: string;
@@ -21,14 +21,14 @@ const JobCard = ({ job }: Props) => {
   return (
     <CardWrapper key={job.id}>
       <div>
-        <StyledLogo backgroundColor="#ccc" />
+        <StyledLogo backgroundColor={job.logoBackground} />
         <InfoWrapper>
           <DotSeperatedText
             isSecondary
             before={job.postedAt}
             after={job.contract}
           />
-          <Title>{job.position}</Title>
+          <Title>{job.jobPosition}</Title>
           <Text isSecondary>{job.company}</Text>
         </InfoWrapper>
       </div>

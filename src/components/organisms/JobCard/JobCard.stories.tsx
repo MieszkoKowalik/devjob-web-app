@@ -6,7 +6,7 @@ const mockedJob = {
   company: "Scoot",
   logo: "./assets/logos/scoot.svg",
   logoBackground: "hsl(36, 87%, 49%)",
-  position: "Senior Software Engineer",
+  jobPosition: "Senior Software Engineer",
   postedAt: "5h ago",
   contract: "Full Time",
   location: "United Kingdom",

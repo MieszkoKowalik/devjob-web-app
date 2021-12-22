@@ -1,5 +1,5 @@
 import JobCard from "components/organisms/JobCard/JobCard";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -12,50 +12,19 @@ export const Wrapper = styled.div`
 
 interface Props {}
 
-const jobs = [
-  {
-    id: 1,
-    company: "Scoot",
-    logo: "./assets/logos/scoot.svg",
-    logoBackground: "hsl(36, 87%, 49%)",
-    position: "Senior Software Engineer",
-    postedAt: "5h ago",
-    contract: "Full Time",
-    location: "United Kingdom",
-  },
-  {
-    id: 2,
-    company: "Blogr",
-    logo: "./assets/logos/blogr.svg",
-    logoBackground: "hsl(12, 79%, 52%)",
-    position: "Haskell and PureScript Dev",
-    postedAt: "20h ago",
-    contract: "Part Time",
-    location: "United States",
-  },
-  {
-    id: 3,
-    company: "Vector",
-    logo: "./assets/logos/vector.svg",
-    logoBackground: "hsl(235, 10%, 23%)",
-    position: "Midlevel Back End Engineer",
-    postedAt: "1d ago",
-    contract: "Part Time",
-    location: "Russia",
-  },
-];
-
-const token = "TOKEN";
-
 const headers = {
   "content-type": "application/json",
-  Authorization: `Bearer ${token}`,
 };
 const graphqlQuery = {
   operationName: "AllJobs",
-  query: `query GetAllJobs { allJobs{
+  query: `query GetAllJobs{ allJobs{
+    id
     company
-    jobposition
+    logoBackground
+    jobposition 
+    postedAt
+    contract
+    location
   } }`,
   variables: {},
 };
@@ -67,13 +36,29 @@ const options = {
 };
 
 const JobsList = (props: Props) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [jobs, setJobs] = useState([
+    {
+      id: 3,
+      company: "Vector",
+      logoBackground: "hsl(235, 10%, 23%)",
+      jobPosition: "Midlevel Back End Engineer",
+      postedAt: "1d ago",
+      contract: "Part Time",
+      location: "Russia",
+    },
+  ]);
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch("https://graphql.datocms.com/", options);
-        console.log(response, "res");
+        const response = await fetch(
+          "/.netlify/functions/fetchDatoCMS",
+          options
+        );
         const data = await response.json();
         console.log(data);
+        setJobs(data.data.jobs);
+        setIsLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -81,9 +66,11 @@ const JobsList = (props: Props) => {
   }, []);
   return (
     <Wrapper>
-      {jobs.map((job) => (
-        <JobCard job={job} key={job.id}></JobCard>
-      ))}
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        jobs.map((job) => <JobCard job={job} key={job.id}></JobCard>)
+      )}
     </Wrapper>
   );
 };
