@@ -2,7 +2,7 @@ import GlobalStyle from "assets/styles/globalStyle";
 import ThemesProvider from "providers/ThemesProvider";
 import MainTemplate from "components/templates/MainTemplate/MainTemplate";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import JobsList from "./JobsList";
+import JobsList from "./JobsList/JobsList";
 
 function Root() {
   return (

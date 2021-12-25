@@ -1,16 +1,7 @@
 import JobCard from "components/organisms/JobCard/JobCard";
 import { useState, useEffect } from "react";
-import styled from "styled-components";
 import { IJob } from "types/Job";
-
-export const Wrapper = styled.div`
-  margin-top: calc(32px + 25px);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  column-gap: 10px;
-  row-gap: calc(24px + 25px);
-`;
-
+import { Wrapper } from "./JobsList.styles";
 interface Props {}
 
 const headers = {
