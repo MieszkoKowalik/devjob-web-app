@@ -1,5 +1,6 @@
 import { factory, primaryKey } from "@mswjs/data";
 import faker from "faker";
+import blogr from "mocks/assets/blogr.svg";
 
 faker.seed(123);
 export const db = factory({
@@ -11,6 +12,9 @@ export const db = factory({
     contract: () =>
       faker.random.arrayElement(["Part Time", "Full Time", "Freelance"]),
     logoBackground: () => faker.internet.color(),
+    logo: {
+      url: () => blogr,
+    },
     postedAt: () => "1d ago",
   },
 });
