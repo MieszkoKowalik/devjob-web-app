@@ -4,24 +4,20 @@ import { Title } from "components/atoms/Title/Title";
 import { Text } from "components/atoms/Text/Text";
 import { Location } from "components/atoms/Location/Location";
 import { StyledLogo, CardWrapper, InfoWrapper } from "./JobCard.styles";
+import { IJob } from "types/Job";
 
 interface Props {
-  job: {
-    id: number;
-    company: string;
-    logoBackground: string;
-    jobPosition: string;
-    postedAt: string;
-    contract: string;
-    location: string;
-  };
+  job: IJob;
 }
 
 const JobCard = ({ job }: Props) => {
   return (
     <CardWrapper key={job.id}>
       <div>
-        <StyledLogo backgroundColor={job.logoBackground} />
+        <StyledLogo
+          source={job.logo.url}
+          backgroundColor={job.logoBackground}
+        ></StyledLogo>
         <InfoWrapper>
           <DotSeperatedText
             isSecondary

@@ -1,11 +1,11 @@
 import JobCard from "./JobCard";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-
+import mockLogo from "mocks/assets/blogr.svg";
 const mockedJob = {
-  id: 1,
+  id: "1",
   company: "Scoot",
-  logo: "./assets/logos/scoot.svg",
   logoBackground: "hsl(36, 87%, 49%)",
+  logo: { url: mockLogo },
   jobPosition: "Senior Software Engineer",
   postedAt: "5h ago",
   contract: "Full Time",

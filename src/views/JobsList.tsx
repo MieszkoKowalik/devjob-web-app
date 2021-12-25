@@ -1,6 +1,7 @@
 import JobCard from "components/organisms/JobCard/JobCard";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import { IJob } from "types/Job";
 
 export const Wrapper = styled.div`
   margin-top: calc(32px + 25px);
@@ -16,17 +17,20 @@ const headers = {
   "content-type": "application/json",
 };
 const graphqlQuery = {
-  operationName: "AllJobs",
-  query: `query GetAllJobs{ allJobs{
+  operationName: "GetMatchingJobs",
+  query: `query GetMatchingJobs($jobPosition:String){ allJobs(filter:{jobPosition:{matches:{ pattern:$jobPosition}}}){
     id
     company
     logoBackground
-    jobposition 
+    logo{
+      url
+    }
+    jobPosition 
     postedAt
     contract
     location
   } }`,
-  variables: {},
+  variables: { jobPosition: "" },
 };
 
 const options = {
@@ -37,17 +41,7 @@ const options = {
 
 const JobsList = (props: Props) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [jobs, setJobs] = useState([
-    {
-      id: 3,
-      company: "Vector",
-      logoBackground: "hsl(235, 10%, 23%)",
-      jobPosition: "Midlevel Back End Engineer",
-      postedAt: "1d ago",
-      contract: "Part Time",
-      location: "Russia",
-    },
-  ]);
+  const [jobs, setJobs] = useState([] as IJob[]);
   useEffect(() => {
     (async () => {
       try {
@@ -57,7 +51,7 @@ const JobsList = (props: Props) => {
         );
         const data = await response.json();
         console.log(data);
-        setJobs(data.data.jobs);
+        setJobs(data.data.allJobs);
         setIsLoading(false);
       } catch (err) {
         console.log(err);
