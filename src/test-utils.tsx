@@ -1,14 +1,9 @@
 import React, { FC, ReactElement } from "react";
 import { render, RenderOptions } from "@testing-library/react";
-import ThemesProvider from "providers/ThemesProvider";
-import { MemoryRouter } from "react-router-dom";
+import AppProviders from "providers/AppProviders";
 
 const AllTheProviders: FC = ({ children }) => {
-  return (
-    <MemoryRouter>
-      <ThemesProvider>{children}</ThemesProvider>
-    </MemoryRouter>
-  );
+  return <AppProviders>{children}</AppProviders>;
 };
 const customRender = (
   ui: ReactElement,
