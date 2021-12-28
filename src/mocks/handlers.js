@@ -19,6 +19,7 @@ const schema = buildSchema(`
   input Filter{
     jobPosition: FilterType
     location: FilterType
+    id:FilterType
   }
   input FilterType{
     eq: String
@@ -29,14 +30,20 @@ const schema = buildSchema(`
   }
 type Query {
     allJobs(filter:Filter): [Job]
+    job(filter:Filter): Job
   }
 `);
 
-function generateRoot({ jobPosition = "" }) {
+function generateRoot({ jobPosition = "", id = "" }) {
   return {
     allJobs: () => {
       return db.job.findMany({
         where: { jobPosition: { contains: jobPosition } },
+      });
+    },
+    job: () => {
+      return db.job.findFirst({
+        where: { id: { equals: id } },
       });
     },
   };
