@@ -13,9 +13,11 @@ export const Button = styled.button<IButton>`
   font-weight: 700;
   font-size: 1rem;
   transition: 0.2s color, 0.2s background-color;
+  text-decoration: none;
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     background-color: ${({ theme }) => theme.colors.bg.accent};
   }
 
