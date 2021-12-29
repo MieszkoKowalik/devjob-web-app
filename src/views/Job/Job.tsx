@@ -1,16 +1,19 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Title } from "components/atoms/Title/Title";
 import { useQuery, gql } from "@apollo/client";
 import { ViewWrapper } from "components/molecules/ViewWrapper/ViewWrapper";
+import CompanyCard from "components/organisms/CompanyCard/CompanyCard";
+
 interface Props {}
 
 const JOB = gql`
-  query GetJob($id: String) {
+  query GetJob($id: ItemId) {
     job(filter: { id: { eq: $id } }) {
       id
       company
-      logoBackground
+      logoBackground {
+        hex
+      }
       logo {
         url
       }
@@ -18,6 +21,16 @@ const JOB = gql`
       postedAt
       contract
       location
+      description
+      requirementsContent
+      requirementsList {
+        element
+      }
+      roleContent
+      roleList {
+        element
+      }
+      website
     }
   }
 `;
@@ -32,7 +45,7 @@ const Job = (props: Props) => {
   console.log(data, "response data");
   return (
     <ViewWrapper isNarrow>
-      {loading ? <h1>Loading...</h1> : <Title>Job: {id}</Title>}
+      {loading ? <h1>Loading...</h1> : <CompanyCard job={data.job} />}
     </ViewWrapper>
   );
 };

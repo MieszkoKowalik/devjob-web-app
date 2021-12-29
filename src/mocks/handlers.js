@@ -4,17 +4,31 @@ import { db } from "./db";
 
 const schema = buildSchema(`
   type Job{
-    id:String
+    id:ID
     company:String
-    logoBackground:String
+    logoBackground:Color
     jobPosition:String
     location:String
     logo: Logo
     postedAt:String
     contract:String
+    description:String
+    requirementsContent:String
+    requirementsList:[List]
+    roleContent:String
+    roleList:[List]
+    website:String
   }  
+  type Color{
+    hex:String
+  }
   type Logo{
     url: String
+  }
+  scalar ItemId
+
+  type List{
+    element: String
   }
   input Filter{
     jobPosition: FilterType
@@ -22,7 +36,7 @@ const schema = buildSchema(`
     id:FilterType
   }
   input FilterType{
-    eq: String
+    eq: ItemId
     matches:Matches
   }
   input Matches{

@@ -1,4 +1,4 @@
-import JobCard from "./JobCard";
+import CompanyCard from "./CompanyCard";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import mockLogo from "mocks/assets/blogr.svg";
 const mockedJob = {
@@ -10,20 +10,18 @@ const mockedJob = {
   postedAt: "5h ago",
   contract: "Full Time",
   location: "United Kingdom",
+  website: "https://scoot.com",
 };
 
 export default {
-  title: "Components/Organisms/JobCard",
-  component: JobCard,
-  parameters: {
-    layout: "centered",
-  },
+  title: "Components/Organisms/CompanyCard",
+  component: CompanyCard,
   args: {
     job: mockedJob,
   },
-} as ComponentMeta<typeof JobCard>;
+} as ComponentMeta<typeof CompanyCard>;
 
-const Template: ComponentStory<typeof JobCard> = (args) => (
-  <JobCard {...args} />
+const Template: ComponentStory<typeof CompanyCard> = (args) => (
+  <CompanyCard {...args} />
 );
 export const Default = Template.bind({});

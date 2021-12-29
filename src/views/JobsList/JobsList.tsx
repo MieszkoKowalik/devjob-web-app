@@ -6,11 +6,13 @@ import { ViewWrapper } from "components/molecules/ViewWrapper/ViewWrapper";
 interface Props {}
 
 const MATCHING_JOBS = gql`
-  query GetMatchingJobs($jobPosition: String) {
+  query GetMatchingJobs($jobPosition: String!) {
     allJobs(filter: { jobPosition: { matches: { pattern: $jobPosition } } }) {
       id
       company
-      logoBackground
+      logoBackground {
+        hex
+      }
       logo {
         url
       }

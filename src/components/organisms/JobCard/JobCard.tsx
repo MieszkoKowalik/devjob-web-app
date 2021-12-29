@@ -20,7 +20,7 @@ const JobCard = ({ job }: Props) => {
       <div>
         <StyledLogo
           source={job.logo.url}
-          backgroundColor={job.logoBackground}
+          backgroundColor={job.logoBackground.hex}
         ></StyledLogo>
         <InfoWrapper>
           <DotSeperatedText
