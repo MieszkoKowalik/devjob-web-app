@@ -13,4 +13,5 @@ export const Logo = styled.div<ILogo>`
   background-image: ${({ source }) => `url(${source})`};
   background-position: center;
   background-repeat: no-repeat;
+  background-size: 70%;
 `;
