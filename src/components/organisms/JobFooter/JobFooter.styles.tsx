@@ -3,7 +3,7 @@ import { ViewWrapper } from "components/molecules/ViewWrapper/ViewWrapper";
 import { Button } from "components/atoms/Button/Button";
 import styled from "styled-components";
 export const StyledContentWrapper = styled(ContentWrapper)`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
