@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import { ViewWrapper } from "components/molecules/ViewWrapper/ViewWrapper";
 import CompanyCard from "components/organisms/CompanyCard/CompanyCard";
+import JobFooter from "components/organisms/JobFooter/JobFooter";
 
 interface Props {}
 
@@ -45,7 +46,14 @@ const Job = (props: Props) => {
   console.log(data, "response data");
   return (
     <ViewWrapper isNarrow>
-      {loading ? <h1>Loading...</h1> : <CompanyCard job={data.job} />}
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <>
+          <CompanyCard job={data.job} />
+          <JobFooter job={data.job} />
+        </>
+      )}
     </ViewWrapper>
   );
 };
