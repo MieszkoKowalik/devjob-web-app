@@ -26,7 +26,7 @@ const JobFooter = ({ job }: Props) => {
             <Text isSecondary>{job.company}</Text>
           </InfoWrapper>
         ) : null}
-        <StyledButton>Apply Now</StyledButton>
+        <StyledButton isWide>Apply Now</StyledButton>
       </StyledViewWrapper>
     </StyledContentWrapper>
   );

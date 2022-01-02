@@ -2,10 +2,11 @@ import styled, { css } from "styled-components";
 
 interface IButton {
   isSecondary?: boolean;
+  isWide?: boolean;
 }
 
 export const Button = styled.button<IButton>`
-  padding: 14px 20px;
+  padding: ${({ isWide }) => (isWide ? "14px 28px" : "14px 20px")};
   border: none;
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.bg.accentDark};

@@ -19,7 +19,6 @@ export const StyledViewWrapper = styled(ViewWrapper)`
   align-items: center;
 `;
 export const StyledButton = styled(Button)`
-  padding: 14px 28px;
   flex-grow: 1;
   @media ${({ theme }) => theme.breakpoints.m} {
     flex-grow: 0;

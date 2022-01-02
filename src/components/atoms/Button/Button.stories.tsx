@@ -6,10 +6,11 @@ export default {
   title: "Components/Atoms/Button",
   component: Button,
   parameters: {
-    controls: { include: ["children", "isSecondary"] },
+    controls: { include: ["children", "isSecondary", "isWide"] },
   },
   argTypes: {
     isSecondary: { conrols: "boolean" },
+    isWide: { conrols: "boolean" },
     children: { control: "text" },
   },
   args: {
@@ -22,4 +23,8 @@ export const Primary = Template.bind({});
 export const Secondary = Template.bind({});
 Secondary.args = {
   isSecondary: true,
+};
+export const Wide = Template.bind({});
+Wide.args = {
+  isWide: true,
 };
