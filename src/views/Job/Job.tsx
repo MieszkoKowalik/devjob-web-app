@@ -4,6 +4,7 @@ import { useQuery, gql } from "@apollo/client";
 import { ViewWrapper } from "components/molecules/ViewWrapper/ViewWrapper";
 import CompanyCard from "components/organisms/CompanyCard/CompanyCard";
 import JobFooter from "components/organisms/JobFooter/JobFooter";
+import JobDetails from "components/organisms/JobDetails/JobDetails";
 
 interface Props {}
 
@@ -51,6 +52,7 @@ const Job = (props: Props) => {
       ) : (
         <>
           <CompanyCard job={data.job} />
+          <JobDetails job={data.job} />
           <JobFooter job={data.job} />
         </>
       )}

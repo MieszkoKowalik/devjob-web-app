@@ -7,5 +7,6 @@ export const Wrapper = styled.div`
   main {
     display: flex;
     justify-content: center;
+    margin-top: -40px;
   }
 `;
