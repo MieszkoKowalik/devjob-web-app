@@ -8,6 +8,11 @@ export const parameters = {
   },
 };
 
+if (typeof global.process === "undefined") {
+  const { worker } = require("../src/mocks/browser");
+  worker.start();
+}
+
 import { lightTheme, darkTheme } from "assets/styles/themes.tsx";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "assets/styles/globalStyle.tsx";
