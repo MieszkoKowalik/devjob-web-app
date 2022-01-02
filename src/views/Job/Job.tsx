@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import { ViewWrapper } from "components/molecules/ViewWrapper/ViewWrapper";
 import CompanyCard from "components/organisms/CompanyCard/CompanyCard";
@@ -45,6 +45,9 @@ const Job = (props: Props) => {
     },
   });
   console.log(data, "response data");
+  if (data && data.job === null) {
+    return <Navigate to="/not-found" />;
+  }
   return (
     <ViewWrapper isNarrow>
       {loading ? (
