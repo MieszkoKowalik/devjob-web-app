@@ -25,10 +25,10 @@ export const db = factory({
     },
     postedAt: () => "1d ago",
     website: () => "https://example.com",
-    description: () => faker.lorem.paragraph(),
-    requirementsContent: () => faker.lorem.paragraph(),
+    description: () => faker.lorem.paragraphs(),
+    requirementsContent: () => faker.lorem.paragraphs(),
     requirementsList: () => generateSentenceArray(),
-    roleContent: () => faker.lorem.paragraph(),
+    roleContent: () => faker.lorem.paragraphs(),
     roleList: () => generateSentenceArray(),
   },
 });
