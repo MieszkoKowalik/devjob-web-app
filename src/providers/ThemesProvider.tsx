@@ -20,7 +20,7 @@ const ThemesProvider = ({ children }: { children: React.ReactNode }) => {
   };
   const setOSPreferedTheme = () => {
     const preferesDarkScheme = window.matchMedia(
-      "(prefers-color-scheme:dark"
+      "(prefers-color-scheme:dark)"
     ).matches;
     if (preferesDarkScheme) {
       setIsDarkMode(true);

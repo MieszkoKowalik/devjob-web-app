@@ -1,22 +1,7 @@
 import userEvent from "@testing-library/user-event";
+import { setMediaMatches } from "setupTests";
 import { render, screen } from "test-utils";
 import ThemeToggler from "./ThemeToggler";
-
-const setMatchMediaToTrue = () => {
-  Object.defineProperty(window, "matchMedia", {
-    writable: true,
-    value: (query: string) => ({
-      matches: true,
-      media: query,
-      onchange: null,
-      addListener: jest.fn(), // Deprecated
-      removeListener: jest.fn(), // Deprecated
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn(),
-    }),
-  });
-};
 
 describe("ThemeToggler component", () => {
   beforeEach(() => {
@@ -49,7 +34,7 @@ describe("ThemeToggler component", () => {
   });
 
   it("Is checked if OS color scheme preference is set to dark", () => {
-    setMatchMediaToTrue();
+    setMediaMatches("(prefers-color-scheme:dark)", true);
     render(<ThemeToggler />);
     const checkbox = screen.getByRole("checkbox");
     expect(checkbox).toBeChecked();
