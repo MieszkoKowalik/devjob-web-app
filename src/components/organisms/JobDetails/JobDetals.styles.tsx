@@ -50,6 +50,8 @@ export const SectionWrapper = styled.div`
   li::before {
     color: ${({ theme }) => theme.colors.text.accent};
     font-weight: 700;
+    line-height: 26px;
+    flex-shrink: 0;
     content: " ";
     background-color: ${({ theme }) => theme.colors.text.accent};
   }
@@ -60,6 +62,7 @@ export const SectionWrapper = styled.div`
       width: 4px;
       height: 4px;
       border-radius: 50%;
+      transform: translateY(-3px);
       background-color: ${({ theme }) => theme.colors.text.accent};
       margin-right: 32px;
     }
@@ -68,7 +71,7 @@ export const SectionWrapper = styled.div`
     color: ${({ theme }) => theme.colors.text.neutralDark};
     line-height: 1.625;
     display: flex;
-    align-items: center;
+    align-items: baseline;
   }
   li:not(:last-child) {
     margin-bottom: 8px;
