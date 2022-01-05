@@ -2,6 +2,7 @@ import { render, screen } from "test-utils";
 import Job from "./Job";
 import { Routes, Route } from "react-router-dom";
 import { setMediaMatches } from "setupTests";
+import { waitFor } from "@testing-library/react";
 
 describe("Job view", () => {
   it("Shows loading screen when entered", () => {
@@ -37,9 +38,11 @@ describe("Job view", () => {
       </Routes>,
       { route: "/job/bb463b8b-b76c-4f6a-9726-65ab5730b69b" }
     );
-    expect(await screen.findAllByText(/Deckow/i)).toHaveLength(2);
-    expect(
-      await screen.findAllByText(/Corporate Security Designer/i)
-    ).toHaveLength(2);
+    await waitFor(() => expect(screen.getAllByText(/Deckow/i)).toHaveLength(2));
+    await waitFor(() =>
+      expect(screen.getAllByText(/Corporate Security Designer/i)).toHaveLength(
+        2
+      )
+    );
   });
 });
