@@ -1,13 +1,31 @@
 import JobCard from "components/organisms/JobCard/JobCard";
 import { IJob } from "types/Job";
-import { Wrapper } from "./JobsList.styles";
+import { ListWrapper, StyledButton } from "./JobsList.styles";
 import { useQuery, gql } from "@apollo/client";
 import { ViewWrapper } from "components/molecules/ViewWrapper/ViewWrapper";
 interface Props {}
 
-const MATCHING_JOBS = gql`
-  query GetMatchingJobs($jobPosition: String!) {
-    allJobs(filter: { jobPosition: { matches: { pattern: $jobPosition } } }) {
+interface JobsData {
+  allJobs: IJob[];
+}
+
+interface JobsVars {
+  jobPosition: string;
+  first: number;
+  skip: number;
+}
+
+const GET_MATCHING_JOBS = gql`
+  query GetMatchingJobs(
+    $jobPosition: String!
+    $first: IntType
+    $skip: IntType
+  ) {
+    allJobs(
+      first: $first
+      skip: $skip
+      filter: { jobPosition: { matches: { pattern: $jobPosition } } }
+    ) {
       id
       company
       logoBackground {
@@ -23,23 +41,42 @@ const MATCHING_JOBS = gql`
     }
   }
 `;
+const JOB_NO_TO_FETCH = 12;
 
 const JobsList = (props: Props) => {
-  const { loading, error, data } = useQuery(MATCHING_JOBS, {
-    variables: { jobPosition: "" },
-  });
-  console.log(data);
+  const { loading, data, fetchMore } = useQuery<JobsData, JobsVars>(
+    GET_MATCHING_JOBS,
+    {
+      variables: {
+        jobPosition: "",
+        first: JOB_NO_TO_FETCH,
+        skip: 0,
+      },
+    }
+  );
+
   return (
     <ViewWrapper>
-      <Wrapper>
+      <ListWrapper>
         {loading ? (
           <h1>Loading...</h1>
         ) : (
-          data.allJobs.map((job: IJob) => (
-            <JobCard job={job} key={job.id}></JobCard>
+          data &&
+          data.allJobs.map((job) => (
+            <JobCard data-testid="card" job={job} key={job.id}></JobCard>
           ))
         )}
-      </Wrapper>
+      </ListWrapper>
+      {data && (
+        <StyledButton
+          isWide
+          onClick={() =>
+            fetchMore({ variables: { skip: data.allJobs.length } })
+          }
+        >
+          Load more
+        </StyledButton>
+      )}
     </ViewWrapper>
   );
 };

@@ -27,6 +27,8 @@ const schema = buildSchema(`
   }
   scalar ItemId
 
+  scalar IntType
+
   type List{
     element: String
   }
@@ -43,16 +45,18 @@ const schema = buildSchema(`
     pattern: String
   }
 type Query {
-    allJobs(filter:Filter): [Job]
+    allJobs(filter:Filter, first:IntType, skip:IntType): [Job]
     job(filter:Filter): Job
   }
 `);
 
-function generateRoot({ jobPosition = "", id = "" }) {
+function generateRoot({ jobPosition = "", id = "", first, skip }) {
   return {
     allJobs: () => {
       return db.job.findMany({
         where: { jobPosition: { contains: jobPosition } },
+        take: first,
+        skip: skip,
       });
     },
     job: () => {

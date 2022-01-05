@@ -10,7 +10,20 @@ interface Props {
 
 const client = new ApolloClient({
   uri: "/.netlify/functions/fetchDatoCMS",
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          allJobs: {
+            keyArgs: false,
+            merge(existing = [], incoming) {
+              return [...existing, ...incoming];
+            },
+          },
+        },
+      },
+    },
+  }),
 });
 
 const AppProviders = ({ children }: Props) => {
