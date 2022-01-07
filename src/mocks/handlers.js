@@ -35,12 +35,17 @@ const schema = buildSchema(`
   input Filter{
     jobPosition: FilterType
     location: FilterType
-    id:FilterType
+    contract:FilterType
+    id: IdFilter
+  }
+  input  IdFilter{
+    eq:ItemId
   }
   input FilterType{
-    eq: ItemId
+    eq: String
     matches:Matches
   }
+
   input Matches{
     pattern: String
   }
@@ -50,11 +55,22 @@ type Query {
   }
 `);
 
-function generateRoot({ jobPosition = "", id = "", first, skip }) {
+function generateRoot({
+  jobPosition = "",
+  id = "",
+  location = "",
+  contract = "",
+  first,
+  skip,
+}) {
   return {
     allJobs: () => {
       return db.job.findMany({
-        where: { jobPosition: { contains: jobPosition } },
+        where: {
+          jobPosition: { contains: jobPosition },
+          location: { contains: location },
+          contract: { contains: contract },
+        },
         take: first,
         skip: skip,
       });
