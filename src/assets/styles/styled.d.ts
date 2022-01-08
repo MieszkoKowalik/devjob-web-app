@@ -21,6 +21,7 @@ declare module "styled-components" {
       bg: {
         primary: string;
         neutral: string;
+        neutralDark: string;
         accentDark: string;
         accent: string;
         accentLight: string;

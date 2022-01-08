@@ -23,6 +23,7 @@ export const lightTheme: DefaultTheme = {
     bg: {
       primary: "hsl(210,22%,96%)",
       neutral: "#fff",
+      neutralDark: "hsl(210,4%,91%)",
       accentDark: "hsl(235,69%,61%)",
       accent: "hsl(235,82%,77%)",
       accentLight: "hsl(235,68%,86%)",
@@ -46,6 +47,7 @@ export const darkTheme: DefaultTheme = {
     bg: {
       primary: "hsl(220,29%,10%)",
       neutral: "hsl(219,29%,14%)",
+      neutralDark: "hsl(220,16%,22%)",
       accentDark: "hsl(235,69%,61%)",
       accent: "hsl(235,82%,77%)",
       accentLight: "hsl(214,17%,45%)",
