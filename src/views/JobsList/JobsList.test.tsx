@@ -2,8 +2,12 @@ import { waitFor } from "@testing-library/react";
 import { render, screen, fireEvent } from "test-utils";
 import user from "@testing-library/user-event";
 import JobsList from "./JobsList";
+import { setMediaMatches } from "setupTests";
 
 describe("JobsList view", () => {
+  beforeEach(() => {
+    setMediaMatches("(min-width:768px)", true);
+  });
   it("Shows loading screen when entered", async () => {
     render(<JobsList />);
     expect(screen.getByText(/Loading/i)).toBeInTheDocument();
@@ -29,7 +33,7 @@ describe("JobsList view", () => {
     render(<JobsList />);
     const titleFilter = screen.getByPlaceholderText(/filter by title/i);
     const locationFilter = screen.getByPlaceholderText(/Location/i);
-    const searchButton = screen.getByText(/search/i);
+    const searchButton = screen.getByText("Search");
     user.type(titleFilter, "Regional");
     user.click(searchButton);
     await waitFor(() =>
@@ -56,10 +60,10 @@ describe("JobsList view", () => {
     ).toBeInTheDocument();
   });
 
-  it("Displays only full time jobs", async () => {
+  it("Displays only full time jobs if full time filter is applied", async () => {
     render(<JobsList />);
-    const isFullTimeFilter = screen.getByLabelText(/full time only/i);
-    const searchButton = screen.getByText(/search/i);
+    const isFullTimeFilter = screen.getByLabelText(/full time/i);
+    const searchButton = screen.getByText("Search");
     user.click(isFullTimeFilter);
     user.click(searchButton);
     await waitFor(() =>
