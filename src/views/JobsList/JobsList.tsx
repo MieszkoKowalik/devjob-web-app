@@ -6,6 +6,7 @@ import { ViewWrapper } from "components/molecules/ViewWrapper/ViewWrapper";
 import { useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
 import SearchBar from "components/organisms/SearchBar/SearchBar";
+import Loader from "components/molecules/Loader/Loader";
 interface Props {}
 
 interface JobsData {
@@ -85,7 +86,7 @@ const JobsList = (props: Props) => {
       <SearchBar filters={filters} setSearchParams={setSearchParams} />
       <ListWrapper>
         {loading ? (
-          <h1>Loading...</h1>
+          <Loader></Loader>
         ) : (
           data &&
           data.allJobs.map((job) => (

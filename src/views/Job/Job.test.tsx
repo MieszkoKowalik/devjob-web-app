@@ -12,7 +12,7 @@ describe("Job view", () => {
       </Routes>,
       { route: "/job/bb463b8b-b76c-4f6a-9726-65ab5730b69b" }
     );
-    expect(screen.getByText(/Loading/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Loading/i)).toBeInTheDocument();
   });
 
   it("Renders Job informations when loaded", async () => {

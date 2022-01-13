@@ -1,11 +1,10 @@
 import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
-import { ViewWrapper } from "components/molecules/ViewWrapper/ViewWrapper";
 import CompanyCard from "components/organisms/CompanyCard/CompanyCard";
 import JobFooter from "components/organisms/JobFooter/JobFooter";
 import JobDetails from "components/organisms/JobDetails/JobDetails";
-
+import { StyledViewWrapper, CenteredLoader } from "./Job.styles";
 interface Props {}
 
 const JOB = gql`
@@ -49,9 +48,9 @@ const Job = (props: Props) => {
     return <Navigate to="/not-found" />;
   }
   return (
-    <ViewWrapper isNarrow>
+    <StyledViewWrapper isNarrow>
       {loading ? (
-        <h1>Loading...</h1>
+        <CenteredLoader></CenteredLoader>
       ) : (
         <>
           <CompanyCard job={data.job} />
@@ -59,7 +58,7 @@ const Job = (props: Props) => {
           <JobFooter job={data.job} />
         </>
       )}
-    </ViewWrapper>
+    </StyledViewWrapper>
   );
 };
 

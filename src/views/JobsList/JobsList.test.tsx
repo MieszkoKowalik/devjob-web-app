@@ -10,7 +10,7 @@ describe("JobsList view", () => {
   });
   it("Shows loading screen when entered", async () => {
     render(<JobsList />);
-    expect(screen.getByText(/Loading/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Loading/i)).toBeInTheDocument();
     expect(await screen.findByText(/Corporate/i)).toBeInTheDocument();
   });
   it("Renders job cards when loaded", async () => {
