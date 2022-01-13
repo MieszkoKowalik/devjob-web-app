@@ -42,7 +42,7 @@ interface IIcon {
 }
 export const StyledSearchIcon = styled(SearchIcon)<IIcon>`
   fill: ${({ $isAccented, theme }) =>
-    $isAccented ? theme.colors.text.accent : theme.colors.text.neutralLight};
+    $isAccented ? theme.colors.bg.accentDark : theme.colors.text.neutralLight};
   width: ${({ $isBig }) => ($isBig ? "24px" : "20px")};
   height: ${({ $isBig }) => ($isBig ? "24px" : "20px")};
 `;
