@@ -1,11 +1,18 @@
-import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import CompanyCard from "components/organisms/CompanyCard/CompanyCard";
 import JobFooter from "components/organisms/JobFooter/JobFooter";
 import JobDetails from "components/organisms/JobDetails/JobDetails";
 import { StyledViewWrapper, CenteredLoader } from "./Job.styles";
+import { IFullJob } from "types/Job";
 interface Props {}
+
+interface JobData {
+  job: IFullJob;
+}
+interface JobVars {
+  id: string | undefined;
+}
 
 const JOB = gql`
   query GetJob($id: ItemId) {
@@ -38,7 +45,7 @@ const JOB = gql`
 
 const Job = (props: Props) => {
   const { id } = useParams();
-  const { loading, error, data } = useQuery(JOB, {
+  const { loading, error, data } = useQuery<JobData, JobVars>(JOB, {
     variables: {
       id: id,
     },
@@ -52,11 +59,13 @@ const Job = (props: Props) => {
       {loading ? (
         <CenteredLoader></CenteredLoader>
       ) : (
-        <>
-          <CompanyCard job={data.job} />
-          <JobDetails job={data.job} />
-          <JobFooter job={data.job} />
-        </>
+        data && (
+          <>
+            <CompanyCard job={data.job} />
+            <JobDetails job={data.job} />
+            <JobFooter job={data.job} />
+          </>
+        )
       )}
     </StyledViewWrapper>
   );
