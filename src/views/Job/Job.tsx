@@ -50,7 +50,6 @@ const Job = (props: Props) => {
       id: id,
     },
   });
-  console.log(data, "response data");
   if (error || (data && data.job === null)) {
     return <Navigate to="/not-found" />;
   }

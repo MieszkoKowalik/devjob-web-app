@@ -63,7 +63,6 @@ const JobsList = (props: Props) => {
     locationFilter: searchParams.get("location"),
     contractFilter: searchParams.get("fullTime") ? true : false,
   };
-  console.log(filters);
 
   const { loading, data, fetchMore, refetch } = useQuery<JobsData, JobsVars>(
     GET_MATCHING_JOBS,
