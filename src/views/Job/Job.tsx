@@ -44,7 +44,7 @@ const Job = (props: Props) => {
     },
   });
   console.log(data, "response data");
-  if (data && data.job === null) {
+  if (error || (data && data.job === null)) {
     return <Navigate to="/not-found" />;
   }
   return (
