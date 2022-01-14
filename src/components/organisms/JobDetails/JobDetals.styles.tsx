@@ -26,9 +26,6 @@ export const Wrapper = styled.div`
 export const MainTitle = styled(Title)`
   margin-top: 8px;
   margin-bottom: 12px;
-  @media ${({ theme }) => theme.breakpoints.m} {
-    font-size: 1.75rem;
-  }
 `;
 
 export const SectionWrapper = styled.div`

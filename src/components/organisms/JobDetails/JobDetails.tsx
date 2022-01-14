@@ -27,7 +27,7 @@ const JobDetails = ({ job }: Props) => {
             before={job.postedAt}
             after={job.contract}
           />
-          <MainTitle>{job.jobPosition}</MainTitle>
+          <MainTitle isResponsive>{job.jobPosition}</MainTitle>
           <Location>{job.location}</Location>
         </div>
 

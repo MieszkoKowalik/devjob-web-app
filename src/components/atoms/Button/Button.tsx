@@ -6,6 +6,7 @@ interface IButton {
 }
 
 export const Button = styled.button<IButton>`
+  display: inline-block;
   padding: ${({ isWide }) => (isWide ? "14px 28px" : "14px 20px")};
   border: none;
   border-radius: 5px;
