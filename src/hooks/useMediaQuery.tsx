@@ -8,7 +8,6 @@ const useMediaQuery = (query: string) => {
       setMatches(mediaQuery.matches);
     }
     const listener = () => {
-      console.log(mediaQuery.matches);
       setMatches(mediaQuery.matches);
     };
     mediaQuery.addEventListener("change", listener);
