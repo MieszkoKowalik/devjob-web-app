@@ -11,6 +11,8 @@ export const LoaderWrapper = styled.div`
   display: flex;
   gap: 15px;
   justify-content: center;
+  height: 100%;
+  align-items: center;
 
   span {
     width: 40px;

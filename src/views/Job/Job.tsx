@@ -3,7 +3,8 @@ import { useQuery, gql } from "@apollo/client";
 import CompanyCard from "components/organisms/CompanyCard/CompanyCard";
 import JobFooter from "components/organisms/JobFooter/JobFooter";
 import JobDetails from "components/organisms/JobDetails/JobDetails";
-import { StyledViewWrapper, CenteredLoader } from "./Job.styles";
+import { StyledViewWrapper } from "./Job.styles";
+import Loader from "components/molecules/Loader/Loader";
 import { IFullJob } from "types/Job";
 interface Props {}
 
@@ -56,7 +57,7 @@ const Job = (props: Props) => {
   return (
     <StyledViewWrapper isNarrow>
       {loading ? (
-        <CenteredLoader></CenteredLoader>
+        <Loader></Loader>
       ) : (
         data && (
           <>
