@@ -43,4 +43,7 @@ export const StyledLabel = styled.label`
     height: 1px;
     overflow: hidden;
   }
+  input:focus-visible ~ div::after {
+    background-color: ${({ theme }) => theme.colors.bg.accent};
+  }
 `;
