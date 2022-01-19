@@ -49,9 +49,13 @@ const schema = buildSchema(`
   input Matches{
     pattern: String
   }
+  type Meta{
+    count:Int
+  }
 type Query {
     allJobs(filter:Filter, first:IntType, skip:IntType): [Job]
     job(filter:Filter): Job
+    _allJobsMeta(filter:Filter):Meta
   }
 `);
 
@@ -79,6 +83,17 @@ function generateRoot({
       return db.job.findFirst({
         where: { id: { equals: id } },
       });
+    },
+    _allJobsMeta: () => {
+      return {
+        count: db.job.findMany({
+          where: {
+            jobPosition: { contains: jobPosition },
+            location: { contains: location },
+            contract: { contains: contract },
+          },
+        }).length,
+      };
     },
   };
 }
