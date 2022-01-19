@@ -1,5 +1,5 @@
 export interface Filters {
-  positionFilter: string | null;
-  locationFilter: string | null;
+  positionFilter: string;
+  locationFilter: string;
   contractFilter: boolean;
 }

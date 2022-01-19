@@ -15,9 +15,18 @@ const client = new ApolloClient({
       Query: {
         fields: {
           allJobs: {
-            keyArgs: false,
-            merge(existing = [], incoming) {
-              return [...existing, ...incoming];
+            read(existing, { args }) {
+              return (
+                existing && existing.slice(args!.skip, args!.skip + args!.first)
+              );
+            },
+            keyArgs: ["jobPosition", "location", "contract"],
+            merge(existing = [], incoming, { args }) {
+              const merged = existing ? existing.slice(0) : [];
+              for (let i = 0; i < incoming.length; ++i) {
+                merged[args!.skip + i] = incoming[i];
+              }
+              return merged;
             },
           },
         },

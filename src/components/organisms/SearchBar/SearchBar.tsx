@@ -18,11 +18,15 @@ import Checkbox from "components/molecules/Checkbox/Checkbox";
 import { ReactComponent as LocationIcon } from "assets/images/desktop/icon-location.svg";
 
 interface Props {
-  setSearchParams: (searchQuery: URLSearchParams) => void;
+  onSubmit: ({
+    positionFilter,
+    locationFilter,
+    contractFilter,
+  }: Filters) => void;
   filters: Filters;
 }
 
-const SearchBar = ({ setSearchParams, filters }: Props) => {
+const SearchBar = ({ onSubmit, filters }: Props) => {
   const initialValues = {
     positionFilter: filters.positionFilter,
     locationFilter: filters.locationFilter,
@@ -36,11 +40,7 @@ const SearchBar = ({ setSearchParams, filters }: Props) => {
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    const searchQuery = new URLSearchParams();
-    if (positionFilter) searchQuery.set("position", positionFilter);
-    if (locationFilter) searchQuery.set("location", locationFilter);
-    if (contractFilter) searchQuery.set("fullTime", "true");
-    setSearchParams(searchQuery);
+    onSubmit({ positionFilter, locationFilter, contractFilter });
   };
 
   const isTablet = useMediaQuery("(min-width:768px)");
@@ -81,7 +81,7 @@ const SearchBar = ({ setSearchParams, filters }: Props) => {
             name="contractFilter"
             id="contractFilter"
             value="fullTime"
-            isChecked={contractFilter!}
+            isChecked={contractFilter}
             onChange={(e) => handleToggleCheckbox(e)}
           />
         </>

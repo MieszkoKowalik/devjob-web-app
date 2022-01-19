@@ -19,6 +19,8 @@ export const setMediaMatches = (query: string, value: boolean) => {
   mediaQueries = { ...mediaQueries, [query]: value };
 };
 
+window.scrollTo = jest.fn();
+
 beforeEach(() => {
   mediaQueries = defaultMediaQueriesValue;
   return Object.defineProperty(window, "matchMedia", {

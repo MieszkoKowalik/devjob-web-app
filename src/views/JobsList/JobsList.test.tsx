@@ -1,5 +1,5 @@
 import { waitFor } from "@testing-library/react";
-import { render, screen, fireEvent } from "test-utils";
+import { render, screen } from "test-utils";
 import user from "@testing-library/user-event";
 import JobsList from "./JobsList";
 import { setMediaMatches } from "setupTests";
@@ -8,27 +8,38 @@ describe("JobsList view", () => {
   beforeEach(() => {
     setMediaMatches("(min-width:768px)", true);
   });
+
   it("Shows loading screen when entered", async () => {
     render(<JobsList />);
     expect(screen.getByLabelText(/Loading/i)).toBeInTheDocument();
     expect(await screen.findByText(/Corporate/i)).toBeInTheDocument();
   });
+
   it("Renders job cards when loaded", async () => {
     render(<JobsList />);
-    await waitFor(() =>
-      expect(screen.getAllByText(/1d ago/i)).toHaveLength(12)
-    );
+    expect(await screen.findByLabelText(/Loading/i)).toBeInTheDocument();
+    expect(
+      await screen.findByText(/Corporate Security Designer/i)
+    ).toBeInTheDocument();
   });
-  it("Loads 12 more job cards after clicking load more button", async () => {
+
+  it("Changes displayed job cars based on page", async () => {
     render(<JobsList />);
-    await waitFor(() =>
-      expect(screen.getAllByText(/1d ago/i)).toHaveLength(12)
-    );
-    fireEvent.click(screen.getByText(/load more/i));
-    await waitFor(() =>
-      expect(screen.getAllByText(/1d ago/i)).toHaveLength(24)
-    );
+    expect(await screen.findByLabelText(/Loading/i)).toBeInTheDocument();
+
+    expect(
+      await screen.findByText(/Corporate Security Designer/i)
+    ).toBeInTheDocument();
+    user.click(screen.getByLabelText(/next/i));
+    expect(
+      await screen.findByText(/Direct Quality Supervisor/i)
+    ).toBeInTheDocument();
+    user.click(screen.getByText(/9/i));
+    expect(
+      await screen.findByText(/Direct Applications Orchestrator/i)
+    ).toBeInTheDocument();
   });
+
   it("Filters jobs by title and location", async () => {
     render(<JobsList />);
     const titleFilter = screen.getByPlaceholderText(/filter by title/i);
