@@ -4,6 +4,6 @@ import { db } from "./db";
 
 export const server = setupServer(...handlers);
 
-for (let i = 0; i < 24; i++) {
+for (let i = 0; i < 100; i++) {
   db.job.create();
 }
