@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 interface IButton {
   isActive?: boolean;
+  hasIcon?: boolean;
 }
 
 export const PaginationButton = styled.button<IButton>`
@@ -18,11 +19,27 @@ export const PaginationButton = styled.button<IButton>`
   text-decoration: none;
   cursor: pointer;
 
-  &:hover,
-  &:focus-visible {
+  svg {
+    fill: ${({ theme }) => theme.colors.text.neutral};
+  }
+
+  &:focus {
+    outline: none;
+  }
+  &:not(:disabled):hover,
+  &:not(:disabled):focus-visible {
     border-color: ${({ theme }) => theme.colors.bg.accentDark};
     color: ${({ theme }) => theme.colors.text.primary};
+    svg {
+      fill: ${({ theme }) => theme.colors.text.primary};
+    }
   }
+
+  ${({ hasIcon }) =>
+    hasIcon &&
+    css`
+      font-size: 0;
+    `}
 
   ${({ isActive }) =>
     isActive &&
@@ -31,8 +48,8 @@ export const PaginationButton = styled.button<IButton>`
       border-color: ${({ theme }) => theme.colors.bg.accentDark};
       background-color: ${({ theme }) => theme.colors.bg.accentDark};
 
-      &:hover,
-      &:focus-visible {
+      &:not(:disabled):hover,
+      &:not(:disabled):focus-visible {
         color: ${({ theme }) => theme.colors.text.neutralLight};
       }
     `}
