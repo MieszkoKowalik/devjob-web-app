@@ -1,46 +1,77 @@
-# Getting Started with Create React App
+# Frontend Mentor - Devjobs web app solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [Devjobs web app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/devjobs-web-app-HuvC_LP4l). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### The challenge
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Users should be able to:
 
-### `npm test`
+- View the optimal layout for each page depending on their device's screen size
+- See hover states for all interactive elements throughout the site
+- Be able to filter jobs on the index page by title, location, and whether a job is for a full-time position
+- Be able to click a job from the index page so that they can read more information and apply for the job
+- **Bonus**: Have the correct color scheme chosen for them based on their computer preferences. _Hint_: Research `prefers-color-scheme` in CSS.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Screenshot
 
-### `npm run build`
+![](./screenshot.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Links
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [Live Site Preview](https://mk-devjobs.netlify.app/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## My process
 
-### `npm run eject`
+### Built with
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [React Router](https://reactrouter.com/)
+- [Create React App](https://create-react-app.dev/)
+- [Styled Components](https://styled-components.com/)
+- [GraphQL](https://graphql.org/)
+- [Apollo Client](https://www.apollographql.com/docs/react/)
+- [DatoCMS](https://www.datocms.com/)
+- [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/)
+- [Jest](https://jestjs.io/)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+- [Mock Service Worker](https://mswjs.io/)
+- [mswjs/data](https://github.com/mswjs/data)
+- [Storybook](https://storybook.js.org/)
+- [React-Modal](http://reactcommunity.org/react-modal/)
+- Mobile-first workflow
+- Flexbox
+- CSS Grid
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Some of the contrast ratios didn't meet accessibility requirements so I tweaked them to meet at least AA **(Acceptable compliance)** level.
+- Instead of `Load More` button, I have incorporated pagination.
+- Main views in this app are lazy-loaded. This is a great way to minimize initial loading time for your app, in exchange for additional loading, when the user goes to a different view. In case of this project, it benefits in 0.2s shorter loading time in lighthouse mobile benchmark. The bigger the app, the bigger the impact.
+- I have used a Headless CMS as a database for the job offers content. This allowed me to practice working with GraphQL API. Data is fetched using Apollo-client.
+- During development I have used Mock Service Worker in combination with fakerjs library to create mock database and API. This way I avoided countless requests to my real API(which has limits). This is also a good technique if the API that you want to use is not yet ready.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Useful resources
 
-## Learn More
+- [fakerjs](https://fakerjs.dev/api/address.html#city) - New documentation for faker package
+- [React TypeScript Cheatsheet](https://github.com/typescript-cheatsheets/react)
+- [Medium - How to Reduce React App Loading Time By 70%](https://javascript.plainenglish.io/speed-up-your-react-app-initial-load-using-code-splitting-f2de58c01ed2) - A Medium article on Lazy Loading in React
+- [CSS Tricks - Complete Guide to Dark Mode](https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Author
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Frontend Mentor - [@MieszkoKowalik](https://www.frontendmentor.io/profile/MieszkoKowalik)
