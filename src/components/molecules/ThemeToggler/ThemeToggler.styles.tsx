@@ -6,7 +6,7 @@ export const StyledLabel = styled.label`
   justify-content: center;
   gap: 16px;
   cursor: pointer;
-  div {
+  span {
     width: 48px;
     height: 24px;
     padding: 5px;
@@ -43,7 +43,7 @@ export const StyledLabel = styled.label`
     height: 1px;
     overflow: hidden;
   }
-  input:focus-visible ~ div::after {
+  input:focus-visible ~ span::after {
     background-color: ${({ theme }) => theme.colors.bg.accent};
   }
 `;

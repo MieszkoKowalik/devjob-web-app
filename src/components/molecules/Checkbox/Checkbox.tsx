@@ -20,7 +20,7 @@ const Checkbox = ({ isChecked, value, name, id, onChange, label }: Props) => {
         value={value}
         id={id}
       />
-      <div></div>
+      <span></span>
       {label}
     </StyledLabel>
   );

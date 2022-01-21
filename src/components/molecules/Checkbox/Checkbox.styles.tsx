@@ -11,7 +11,7 @@ export const StyledLabel = styled.label`
   cursor: pointer;
 
   &:hover {
-    div {
+    span {
       background-color: ${({ theme }) => theme.colors.bg.accentLight};
     }
   }
@@ -25,20 +25,20 @@ export const StyledLabel = styled.label`
     overflow: hidden;
   }
 
-  input:focus-visible + div {
+  input:focus-visible + span {
     background-color: ${({ theme }) => theme.colors.bg.accentLight};
     position: relative;
   }
-  input:checked + div::after {
+  input:checked + span::after {
     content: ${() => `url(${CheckedIcon})`};
     display: block;
     position: absolute;
   }
-  input:checked + div {
+  input:checked + span {
     background-color: ${({ theme }) => theme.colors.bg.accentDark};
   }
 
-  div {
+  span {
     display: flex;
     align-items: center;
     justify-content: center;

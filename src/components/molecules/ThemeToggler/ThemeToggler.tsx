@@ -8,16 +8,16 @@ interface Props {}
 const ThemeToggler = (props: Props) => {
   const { isDarkMode, toggleTheme } = useContext(ThemesContext);
   return (
-    <StyledLabel aria-label="Dark Mode" htmlFor="dark mode">
+    <StyledLabel aria-label="Dark Mode" htmlFor="dark-mode">
       <input
         checked={isDarkMode}
         onChange={toggleTheme}
         type="checkbox"
         name="dark mode"
-        id="dark mode"
+        id="dark-mode"
       />
       <SunIcon />
-      <div></div>
+      <span></span>
       <MoonIcon />
     </StyledLabel>
   );
